@@ -53,13 +53,6 @@ def lengthOfLongestSubstring(s: str) -> int:
             end += 1
         return longestStringLn
 
-def isDuplicate(d):
-    for key, val in d.items():
-        if val > 1:
-            return True
-    else:
-        return False
-
 if __name__ == "__main__":
     s = "abcabcbb"
     print(lengthOfLongestSubstring(s))
