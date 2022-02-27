@@ -32,21 +32,23 @@ def lengthOfLongestSubstring(s: str) -> int:
         longestStringLn = 0
         longestString = ""
         currentString = ""
-        #isDuplicate = 0
+        isDuplicate = 0
         lnString = len(s)
         
         while end < lnString:
             currentString = s[start:end+1]
             tempDict[s[end]] = tempDict.get(s[end],0) + 1
-            #if tempDict[s[end]] > 1:
-            #    isDuplicate += 1
+            if tempDict[s[end]] > 1:
+                isDuplicate += 1
             
-            if not isDuplicate(tempDict):
+            if not isDuplicate:
                 
                 if len(currentString) > longestStringLn:
                     longestStringLn = len(currentString)
-            elif isDuplicate(tempDict):
+            elif isDuplicate:
                 tempDict[s[start]] = tempDict.get(s[start]) - 1
+                if tempDict[s[start]] > 0:
+                    isDuplicate -= 1
                 start += 1
             end += 1
         return longestStringLn
